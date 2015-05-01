@@ -978,7 +978,7 @@ bool venc_dev::venc_open(OMX_U32 codec)
     fmt.type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
     fmt.fmt.pix_mp.height = m_sVenc_cfg.input_height;
     fmt.fmt.pix_mp.width = m_sVenc_cfg.input_width;
-    fmt.fmt.pix_mp.pixelformat = V4L2_PIX_FMT_NV12;
+    fmt.fmt.pix_mp.pixelformat = m_sVenc_cfg.inputformat;
     fmt.fmt.pix_mp.colorspace = V4L2_COLORSPACE_BT878;
 
     ret = ioctl(m_nDriver_fd, VIDIOC_S_FMT, &fmt);
@@ -1326,7 +1326,7 @@ bool venc_dev::venc_set_param(void *paramData,OMX_INDEXTYPE index )
                         fmt.type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
                         fmt.fmt.pix_mp.height = m_sVenc_cfg.input_height;
                         fmt.fmt.pix_mp.width = m_sVenc_cfg.input_width;
-                        fmt.fmt.pix_mp.pixelformat = V4L2_PIX_FMT_NV12;
+                        fmt.fmt.pix_mp.pixelformat = m_sVenc_cfg.inputformat;
                         fmt.fmt.pix_mp.colorspace = V4L2_COLORSPACE_BT878;
 
                         if (ioctl(m_nDriver_fd, VIDIOC_S_FMT, &fmt)) {
